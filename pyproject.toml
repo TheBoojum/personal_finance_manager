@@ -1,0 +1,93 @@
+[project]
+    # Change to the repo name
+    name = "xxxx"
+    version = "0.1.0"
+    # Change to your own description
+    description = "xxxx"
+    readme = "README.md"
+    authors = [
+        {name = "Philip Cogswell",email = "github@sisyphus21.net"}
+    ]
+    maintainers = [
+        {name = "Philip Cogswell",email = "github@sisyphus21.net"}
+    ]
+    # List of licences: https://spdx.org/licenses/
+    license = "MIT"
+    license-files = ["LICENCE",]
+    requires-python = ">=3.13"
+    dependencies = [
+    ]
+    # Change to your own keywords
+    keywords = ["python", "xxxx",]
+    # List of Trove classifiers: https://pypi.org/classifiers/
+    classifiers = [
+        "Development Status :: 3 - Alpha",
+        "Environment :: Win32 (MS Windows)",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+        "Topic :: Utilities",
+    ]
+
+# Change to your own URLs
+[project.urls]
+    Homepage = "https://github.com/TheBoojum/xxxx"
+    Repository = "https://github.com/TheBoojum/xxxx.git"
+    "Bug Tracker" = "https://github.com/TheBoojum/xxxx/issues"
+
+[build-system]
+    requires = ["poetry-core>=2.0.0,<3.0.0"]
+    build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+
+[tool.poetry.dependencies]
+    python = ">=3.13,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+    pytest = "^8.4"
+    black = "^25.9.0"
+    isort = "^6.0.0"
+    pylint = "^3.3.0"
+    sphinx = "^8.2.0"
+    myst-parser = "^4.0.1"
+    sphinx-rtd-theme = "^3.0.2"
+    sphinx-autodoc-typehints = "^3.2.0"
+
+# Change the below to your own package details
+[[tool.poetry.packages]]
+    include = "xxxx"
+    from = "src"
+
+# Developement Tool Config
+[tool.isort]
+    profile = "black"
+    
+[tool.black]
+    line-length = 88
+
+# Custom: Techniques used
+# Change the below to your own techniques
+[tool.techniques]
+features=[
+    "sphinx",
+    "black",
+    "isort",
+    "pylint",
+    "poetry",
+]
+
+[tool.pylint."MASTER"]
+    max-line-length = 100
+    ignore = ["tests", "docs"]
+
+[tool.pylint."MESSAGES CONTROL"]
+    disable = [
+        "C0114",  # missing module docstring
+        "C0115",  # missing class docstring
+        "C0116",  # missing function docstring
+    ]
+
+[tool.pylint."TYPECHECK"]
+ignored-modules = ["numpy", "pandas"]
