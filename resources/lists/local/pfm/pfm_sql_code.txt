@@ -1,0 +1,2 @@
+10_create_indexes
+20_create_mapping_inbox

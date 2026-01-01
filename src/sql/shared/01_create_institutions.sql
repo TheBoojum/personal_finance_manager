@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS institutions (
+    institution_id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    created_date TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+    last_updated_date TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP)
+);

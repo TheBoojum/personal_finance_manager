@@ -1,0 +1,34 @@
+{
+  "id": "johnlewis_old_v2022_headered_cr",
+  "provider": "John Lewis (Old)",
+  "account": "Partnership Card (Old)",
+  "account_type": "credit_card",
+  "effective_from": "2022-01-01",
+  "effective_to": "2022-12-31",
+  "filename_regex": "^John Lewis Transactions - \\d{4}-\\d{2}-\\d{2}\\.csv$",
+  "csv_signature": {
+    "header": true,
+    "expected_columns": ["Date Processed", "Description", "Amount", ""],
+    "date_formats": ["%d-%b-%y"],
+    "encoding": "utf-8",
+    "currency_symbol_in_amount": true
+  },
+  "columns": {
+    "txn_date": "Date Processed",
+    "description": "Description",
+    "amount_raw": "Amount",
+    "credit_marker": ""
+  },
+  "normalization": {
+    "currency": "GBP",
+    "sign_policy": "expenses_positive",
+    "rules": [
+      { "type": "credit_marker_equals", "value": "CR", "action": "make_positive" }
+    ]
+  },
+  "cleaning": {
+    "remove_currency_symbol": "£",
+    "remove_thousands_separators": true,
+    "trim_whitespace": true
+  }
+}

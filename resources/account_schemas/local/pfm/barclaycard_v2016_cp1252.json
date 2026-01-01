@@ -1,0 +1,38 @@
+{
+  "id": "barclaycard_v2016_cp1252",
+  "provider": "Barclaycard",
+  "account": "Barclaycard",
+  "account_type": "credit_card",
+  "effective_from": "2016-01-01",
+  "effective_to": null,
+  "filename_regex": "^Barclaycard Transactions - \\d{4}-\\d{2}-\\d{2}\\.csv$",
+  "csv_signature": {
+    "header": false,
+    "expected_columns_count": 8,
+    "date_formats": ["%d-%b-%y"],
+    "encoding": "cp1252",
+    "contains_tokens": ["Visa"]
+  },
+  "columns": {
+    "txn_date__index": 0,
+    "description__index": 1,
+    "extra__index": 2,
+    "network__index": 3,
+    "cardholder__index": 4,
+    "category_raw__index": 5,
+    "note_raw__index": 6,
+    "amount_raw__index": 7
+  },
+  "normalization": {
+    "currency": "GBP",
+    "sign_policy": "expenses_positive",
+    "rules": [
+      { "type": "description_regex", "pattern": "(?i)payment|direct debit", "action": "make_positive" }
+    ]
+  },
+  "cleaning": {
+    "trim_whitespace": true,
+    "strip_trailing_punctuation": true,
+    "skip_blank_lines": true
+  }
+}

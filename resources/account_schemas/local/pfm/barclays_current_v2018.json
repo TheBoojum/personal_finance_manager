@@ -1,0 +1,34 @@
+{
+  "id": "barclays_current_v2018",
+  "provider": "Barclays",
+  "account": "Barclays Current",
+  "account_type": "bank",
+  "effective_from": "2018-01-01",
+  "effective_to": null,
+  "filename_regex": "^Barclays Current Transactions - \\d{4}-\\d{2}-\\d{2}\\.csv$",
+  "csv_signature": {
+    "header": true,
+    "expected_columns": ["Number", "Date", "Account", "Amount", "Subcategory", "Memo"],
+    "date_formats": ["%d/%m/%Y"],
+    "encoding": "utf-8",
+    "currency_symbol_in_amount": false
+  },
+  "columns": {
+    "cheque_number": "Number",
+    "txn_date": "Date",
+    "account_ref": "Account",
+    "amount_raw": "Amount",
+    "category_raw": "Subcategory",
+    "note_raw": "Memo"
+  },
+  "normalization": {
+    "currency": "GBP",
+    "sign_policy": "cashflow",
+    "rules": []
+  },
+  "cleaning": {
+    "trim_whitespace": true,
+    "strip_trailing_punctuation": true,
+    "skip_blank_lines": true
+  }
+}
